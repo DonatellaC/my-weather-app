@@ -9,6 +9,25 @@ export default class ElasticDropdownCard extends Component {
     this.state = {
       selectedMunicipios: [],
     };
+    this.onMunicipioSelected = this.onMunicipioSelected.bind(this);
+  }
+
+  onMunicipioSelected(selection) {
+    //fetch weather information
+    fetch(
+      `https://www.el-tiempo.net/api/json/v2/provincias/${selection[0].codprov}/municipios/${selection[0].id}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({
+          loading: false,
+          weather: {
+            municipio: data.municipio.NOMBRE,
+            tempActual: data.temperatura_actual,
+            probLluvia: data.lluvia,
+          },
+        });
+      });
   }
 
   componentDidMount() {
@@ -20,6 +39,7 @@ export default class ElasticDropdownCard extends Component {
         this.setState({
           municipios: data.municipios.map((municipio) => {
             return {
+              //using CODIGOINE instead of COD_GEO due to an error obtaining the right city
               id: municipio.CODIGOINE.substring(0, 5),
               codprov: municipio.CODPROV,
               label: municipio.NOMBRE,
@@ -44,7 +64,7 @@ export default class ElasticDropdownCard extends Component {
         </div>
         <div className="result">
           {this.state.loading && <div>Loading...</div>}
-          {this.state.weather && <EuiCard />}
+          {this.state.weather && <EuiCard textAlign="left" />}
         </div>
       </div>
     );
