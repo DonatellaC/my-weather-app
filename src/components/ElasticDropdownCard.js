@@ -64,7 +64,13 @@ export default class ElasticDropdownCard extends Component {
         </div>
         <div className="result">
           {this.state.loading && <div>Loading...</div>}
-          {this.state.weather && <EuiCard textAlign="left" />}
+          {this.state.weather && (
+            <EuiCard
+              textAlign="left"
+              title={this.state.weather.municipio}
+              description={`Current Temperature ${this.state.weather.tempActual}\u00b0 - Probability of Precipitation ${this.state.weather.probLluvia}%`}
+            />
+          )}
         </div>
       </div>
     );
