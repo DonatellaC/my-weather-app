@@ -52,9 +52,10 @@ export default class ElasticDropdownCard extends Component {
   render() {
     return (
       <div>
-        <div>
+        <div className="dropdown">
           <EuiComboBox
-            placeholder="Select a city"
+            id="comboBox"
+            placeholder={<span className="selectCity">Select a city</span>}
             singleSelection={{ asPlainText: true }}
             options={this.state.municipios}
             selectedOptions={this.state.selectedMunicipios}
@@ -64,11 +65,30 @@ export default class ElasticDropdownCard extends Component {
         </div>
         <div className="result">
           {this.state.loading && <div>Loading...</div>}
+
           {this.state.weather && (
             <EuiCard
-              textAlign="left"
-              title={this.state.weather.municipio}
-              description={`Current Temperature ${this.state.weather.tempActual}\u00b0 - Probability of Precipitation ${this.state.weather.probLluvia}%`}
+              id="card"
+              textAlign="center"
+              title={
+                <span className="municipio">
+                  {this.state.weather.municipio}
+                </span>
+              }
+              image={
+                <span>
+                  <img
+                    id="picture"
+                    src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn.wallpapersafari.com%2F41%2F19%2FdYHilS.jpg&f=1&nofb=1"
+                    alt="weather"
+                  />
+                </span>
+              }
+              description={
+                <span className="temperature">
+                  {`Current Temperature: ${this.state.weather.tempActual}\u00b0 - Precipitation: ${this.state.weather.probLluvia}%`}
+                </span>
+              }
             />
           )}
         </div>
