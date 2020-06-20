@@ -1,4 +1,3 @@
-//import { render } from "@testing-library/react";
 import { EuiComboBox, EuiCard } from "@elastic/eui";
 
 import React, { Component } from "react";
