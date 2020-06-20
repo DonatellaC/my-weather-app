@@ -4,7 +4,7 @@ Weather-app
 
 ## `Instructions`
 
-Creat a weather web application using:
+Create a weather web application using:
 
 - React
 - Elastic UI framework
