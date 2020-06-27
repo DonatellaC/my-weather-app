@@ -26,6 +26,9 @@ export default class ElasticDropdownCard extends Component {
             probLluvia: data.lluvia,
           },
         });
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }
 
@@ -45,6 +48,9 @@ export default class ElasticDropdownCard extends Component {
             };
           }),
         });
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }
 

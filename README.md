@@ -1,6 +1,6 @@
 ## Project
 
-Weather-app
+Weather-app 🌤
 
 ## `Instructions`
 
